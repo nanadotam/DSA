@@ -12,6 +12,17 @@ public class BrowserHistoryManager {
         // Delete from history
         bh.removePage("10:05 AM");
 
+        // Display history FIFO
+        System.out.println("History Forward:");
+        bh.displayHistoryForward();
+        System.out.println();
+
+        // Display hisory LIFO
+        System.out.println("History Backward:");
+        bh.displayHistoryBackward();
+        System.out.println();
+
+
         try {
             // Save to file
             bh.saveToFile("history.txt");
