@@ -1,8 +1,17 @@
 public class BasicPlaylist {
+    /*
+     * Node class
+     * @param song Song object
+     * @param next Node object
+     */
     private class Node { 
         Song song;
         Node next;
 
+        /*
+         * Node constructor
+         * @param song Song object
+         */
         // Constructor
         Node (Song song) {
             this.song = song;
@@ -10,15 +19,26 @@ public class BasicPlaylist {
         }
     }
 
+    /*
+     * Head of the playlist
+     * @param head Node
+     */
     private Node head;
 
+    /* 
+     * BasicPlaylist constructor
+     * @param head Node
+     */
     // Constructor
     public BasicPlaylist() {
         this.head = null;
     }
 
+    /*
+     * Adds a song to the end of the playlist.
+     * @param song Song to be added
+     */
     public void addSong(Song song) {
-
         Node newNode = new Node(song); // initialization of new node
         if (head == null) { // if list is empty
             head = newNode; // make first node the song
@@ -32,6 +52,11 @@ public class BasicPlaylist {
             }
         }
 
+    /*
+     * Adds a song to the playlist at a specific position.
+     * @param song Song to be added.
+     * @param position Position to add the song at
+     */
     public void addSong(Song song, int position) {
         // adding a song to the playlist at a specific position
         Node newNode = new Node(song); // intialize new node
@@ -49,7 +74,6 @@ public class BasicPlaylist {
                 current.next = newNode;
             }
         }
-        // System.out.println("Adding a song to the playlist at position " + position )
 
 
 
@@ -82,29 +106,26 @@ public class BasicPlaylist {
         }
     }
 
-                }
-                public void printPlaylist() {
-                    // System.out.println("Printing the playlist");
-                    Node current = head;
-                    while (current != null) {
-                        System.out.println(current.song);
-                        current = current.next;
-                    }
-                    }
-                    public void printPlaylistReverse() {
-                        // System.out.println("Printing the playlist in reverse");
-                        Node current = head;
-                        Node previous = null;
-                        while (current != null) {
-                            previous = current;
-                            current = current.next;
-                            }
-                            while (previous != null) {
-                                System.out.println(previous.song);
-                                previous = previous.next;
-                                }
-                                }
+    public void printPlaylist() {
+        Node current = head;
+        while (current != null) {
+            System.out.println(current.song);
+            current = current.next;
+        }
+    }
+    
+    // public void printPlaylistReverse() {
+    //     Node current = head;
+    //     Node previous = null;
+    //     while (current != null) {
+    //         previous = current;
+    //         current = current.next;
+    //     }
+    //     while (previous != null) {
+    //         System.out.println(previous.song);
+    //         previous = previous.next;
+    //     }
+    // }
 
     }
-
 }
