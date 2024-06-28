@@ -99,26 +99,53 @@ public class BasicPlaylist {
         }
     }
 
-    public void printPlaylist() {
+    /*
+     * Removes a song at a specified position
+     * @param position Position of song to be removed
+     */
+    public void removeSong(int position) {
+        if (head == null) {
+            // The playlist is empty
+            return;
+        }
+        if (position == 0) {
+            head = head.next;
+            return;
+        }
+        Node current = head;
+        for (int i = 0; i < position - 1; i++) {
+            if (current != null) {
+                current = current.next;
+            }
+        }
+        if (current != null && current.next != null) {
+            current.next = current.next.next;
+        }
+    }
+
+    /*
+     * Prints the playlist
+     */
+    public void dsiplayPlaylist() {
         Node current = head;
         while (current != null) {
             System.out.println(current.song);
+            // System.out.println(current.song.title);
             current = current.next;
         }
     }
-    
-    // public void printPlaylistReverse() {
-    //     Node current = head;
-    //     Node previous = null;
-    //     while (current != null) {
-    //         previous = current;
-    //         current = current.next;
-    //     }
-    //     while (previous != null) {
-    //         System.out.println(previous.song);
-    //         previous = previous.next;
-    //     }
-    // }
 
+    /*
+    * Returns the number of songs in the playlist
+    */
+    public int getTotalDuration() {
+        int totalDuration = 0;
+        Node current = head;
+        while (current != null) {
+            totalDuration += current.song.duration;
+            current = current.next;
+        }
+        return totalDuration;
     }
+
 }
