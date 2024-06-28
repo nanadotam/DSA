@@ -1,3 +1,7 @@
 .idx/dev.nix
 .vscode/settings.json
 Assignment 2/get_code_context_java.sh
+Assignment 2/BasicPlaylist.class
+Assignment 2/BasicPlaylist$Node.class
+Assignment 2/BasicPlaylistManager.class
+Assignment 2/Song.class

@@ -126,11 +126,11 @@ public class BasicPlaylist {
     /*
      * Prints the playlist
      */
-    public void dsiplayPlaylist() {
+    public void displayPlaylist() {
         Node current = head;
         while (current != null) {
-            System.out.println(current.song);
-            // System.out.println(current.song.title);
+            // System.out.println(current.song);
+            System.out.println("Title: " + current.song.title + ", Artist: " + current.song.artist + ", Duration: " + current.song.duration);
             current = current.next;
         }
     }
@@ -138,6 +138,9 @@ public class BasicPlaylist {
     /*
     * Returns the number of songs in the playlist
     */
+
+    // Check to see if you cna convert duration from secods to
+    // hours and minutes and seconds. Use simple code (you've done it before)
     public int getTotalDuration() {
         int totalDuration = 0;
         Node current = head;
