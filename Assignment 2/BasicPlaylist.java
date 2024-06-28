@@ -53,7 +53,7 @@ public class BasicPlaylist {
         }
 
     /*
-     * Adds a song to the playlist at a specific position.
+     * Adds a song to the playlist at a specified position.
      * @param song Song to be added.
      * @param position Position to add the song at
      */
@@ -74,35 +74,28 @@ public class BasicPlaylist {
                 current.next = newNode;
             }
         }
-
-
-
-
-
-        if (head == null) { // if list is empty
-            head = newNode; // make first node the song
-        } else {
-            Node current = head; // else make the current node the head node (prev)
-            for (int i = 0; i < position - 1; i++) {
-                current = current.next;
-            }
-            newNode.next = current.next;
-            current.next = newNode;
-        }
     }
 
-    public void removeSong(Song song) {
-        // System.out.println("Removing a song from the playlist");
+    /*
+     * Removes a song from the playlist using its Title
+     * @param title Title of song to be removed
+     */
+    public void removeSong(String title) {
         if (head == null) {
-            System.out.println("The playlist is empty");
-        } else {
-            Node current = head;
-            Node previous = null;
-            while (current.next != null) {
-                previous = current;
-                current = current.next;
-            }
-            previous.next = null;
+            // System.out.println("The playlist is empty");
+            return;
+        }
+        if (head.song.title.equals(title)) {
+            head = head.next;
+            return;
+        }
+        Node current = head;
+        // Node previous = null;
+        while (current.next != null && !current.next.song.title.equals(title)) {
+            current = current.next;
+        }
+        if (current.next != null) {
+            current.next = current.next.next;
         }
     }
 
