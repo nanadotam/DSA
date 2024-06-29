@@ -1,6 +1,6 @@
 # DSA Assignments and Practice Questions
 
-## Data Structures
+## Knowledge Bank and Checklist `TO BE EDITED PROPERLY`
 ### Linked List
  * A *Linked List* is a linear collection of data elements, called nodes, each
    pointing to the next node by means of a pointer. It is a data structure
