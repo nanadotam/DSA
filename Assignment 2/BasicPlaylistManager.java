@@ -6,7 +6,7 @@ public class BasicPlaylistManager {
 
         Song song1 = new Song("Song1", "Artist1", 300);
         Song song2 = new Song("Song2", "Artist2", 240);
-        Song song3 = new Song("Song3", "Artist3", 180);
+        Song song3 = new Song("Song3", "Artist3", 182);
 
         playlist.addSong(song1);
         playlist.addSong(song2);

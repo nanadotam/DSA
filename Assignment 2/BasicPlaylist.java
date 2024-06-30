@@ -130,7 +130,8 @@ public class BasicPlaylist {
         Node current = head;
         while (current != null) {
             // System.out.println(current.song);
-            System.out.println("Title: " + current.song.title + ", Artist: " + current.song.artist + ", Duration: " + current.song.duration);
+            System.out.println("Title: " + current.song.title + ", Artist: " + current.song.artist + ", Duration: " + current.song.getFormattedDuration());
+            // System.out.println("Title: " + current.song.title + ", Artist: " + current.song.artist + ", Duration: " + current.song.duration);
             current = current.next;
         }
     }
