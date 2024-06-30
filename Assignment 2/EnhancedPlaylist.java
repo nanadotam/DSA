@@ -47,17 +47,15 @@ public class EnhancedPlaylist {
      */
     public void addSong(Song song) {
         Node newNode = new Node(song); // initialization of new node
-        if (head == null && tail == null) { // if list is empty
+        if (head == null) { // if list is empty
             head = newNode; // make first node the song
+            tail = newNode; // make first node the tail as well
         } else {   // else if the list is non-empty
-            Node current = head; // else make the current node the head node (prev)
-            while (current.next != null) { // while the next node is not the last element
-                current = current.next; // make current the next node
-            }
-            // append to the end of the list
-            current.next = newNode; // make the last element point to the new node
-            }
+            tail.next = newNode; // last element is the new node
+            newNode.prev = tail; // prev pointer of newNode is the current tail
+            tail = newNode; // update current tail to the newNode
         }
+    }
 
 
 }
