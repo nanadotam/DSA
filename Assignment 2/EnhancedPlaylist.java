@@ -24,18 +24,40 @@ public class EnhancedPlaylist {
 
     /*
      * Head of the playlist
+     * Tail of the playlist
      * @param head Node
+     * @param tail Node
      */
     private Node head;
+    private Node tail;
 
     /* 
-     * BasicPlaylist constructor
-     * @param head Node
+     * EnhancedPlaylist constructor
+     * @param head Pointer for traversing through list.
      */
     // Constructor
-    public BasicPlaylist() {
+    public EnhancedPlaylist() {
         this.head = null;
+        this.tail = null;
     }
+
+    /*
+     * Adds a song to the end of the playlist.
+     * @param song Song to be added
+     */
+    public void addSong(Song song) {
+        Node newNode = new Node(song); // initialization of new node
+        if (head == null && tail == null) { // if list is empty
+            head = newNode; // make first node the song
+        } else {   // else if the list is non-empty
+            Node current = head; // else make the current node the head node (prev)
+            while (current.next != null) { // while the next node is not the last element
+                current = current.next; // make current the next node
+            }
+            // append to the end of the list
+            current.next = newNode; // make the last element point to the new node
+            }
+        }
 
 
 }

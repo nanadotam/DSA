@@ -27,7 +27,7 @@ public class BasicPlaylist {
 
     /* 
      * BasicPlaylist constructor
-     * @param head Node
+     * @param head Pointer for traversing through list.
      */
     // Constructor
     public BasicPlaylist() {
