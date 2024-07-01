@@ -191,5 +191,41 @@ public class EnhancedPlaylist {
         }
         return totalDuration;
     }
+
+    /*
+     * Play next song in the playlist
+     * @param currentSong Current Song object being played
+     * @return the next Song object
+     */
+    public Song playNext(Song song){ 
+        Node current = head;
+        while (current != null && !current.song.equals(song)) {
+            current = current.next;
+        }
+        if (current != null && current.next != null) {
+            return current.next.song;
+        } else {
+            return null; // no next song
+        }
+    }
+
+    /*
+     * Play previous song in the playlist
+     * @param currentSong Current Song object being played
+     * @return the previous Song object
+     */
+    public Song playPrevious(Song song){ 
+        Node current = head;
+        while (current != null && !current.song.equals(song)) {
+            current = current.next;
+        }
+        if (current != null && current.next != null) {
+            return current.prev.song;
+        } else {
+            return null; // no previous song
+        }
+    }
+
+
 }
 
