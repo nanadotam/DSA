@@ -192,6 +192,19 @@ public class EnhancedPlaylist {
         return totalDuration;
     }
 
+    public String getFormattedTotalDuration() {
+        int totalDuration = getTotalDuration();
+        int hours = totalDuration / 3600;
+        int min = (totalDuration % 3600) / 60;
+        int secs = totalDuration % 60;
+    
+        if (hours <= 0) {
+            return String.format("%02d:%02d", min, secs);
+        } else {
+            return String.format("%d:%02d:%02d", hours, min, secs);
+        }
+    }
+
     /*
      * Play next song in the playlist
      * @param currentSong Current Song object being played
@@ -211,7 +224,9 @@ public class EnhancedPlaylist {
 
     /*
      * Play previous song in the playlist
-     * @param currentSong Current Song object being played
+     * @param currentSong Current Song
+     * 
+     *  object being played
      * @return the previous Song object
      */
     public Song playPrevious(Song song){ 
