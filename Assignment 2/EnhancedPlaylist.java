@@ -130,8 +130,17 @@ public class EnhancedPlaylist {
      * @param position Position of song to be removed
      */
     public void removeSong(int position) {
-        if (head == null && tail == null) {
-            
+        if (head == null && tail == null) { // empty playist
+            return;
+        }
+        if (position == 0) {
+            head = head.next;
+            if (head != null) {
+                head.prev = null;
+            } else {
+                tail = null;
+            }
+            return;
         }
 
 }
