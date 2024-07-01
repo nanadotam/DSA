@@ -57,5 +57,16 @@ public class EnhancedPlaylist {
         }
     }
 
+    /*
+     * Adds a song to the playlist at a specified position.
+     * @param song Song to be added.
+     * @param position Position to add the song at
+     */
+    public void addSong(Song song, int position) {
+        Node newNode = new Node(song); // initailize new node
+        if (position == 0) { // if position is at the beginning 
+            newNode.next = head; 
+        }
+
 
 }
