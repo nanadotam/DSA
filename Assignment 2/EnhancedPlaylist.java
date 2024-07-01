@@ -1,3 +1,10 @@
+// add playing next song
+// add previous song
+// SHUFFLING the playlist (use random)
+
+
+
+
 public class EnhancedPlaylist {
     /*
      * Node class
