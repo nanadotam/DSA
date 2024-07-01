@@ -139,9 +139,6 @@ public class BasicPlaylist {
     /*
     * Returns the number of songs in the playlist
     */
-
-    // Check to see if you cna convert duration from secods to
-    // hours and minutes and seconds. Use simple code (you've done it before)
     public int getTotalDuration() {
         int totalDuration = 0;
         Node current = head;

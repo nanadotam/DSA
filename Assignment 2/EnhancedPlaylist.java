@@ -124,7 +124,6 @@ public class EnhancedPlaylist {
         }
     }
 
-
     /*
      * Removes a song at a specified position
      * @param position Position of song to be removed
@@ -142,6 +141,48 @@ public class EnhancedPlaylist {
             }
             return;
         }
+        Node current = head;
+        for (int i = 0; i < position - 1; i++) {
+            if (current.next == null) {
+                break;
+            }
+            current = current.next;
+        }
+        if (current.next != null) {
+            Node toRemove = current.next;
+            current.next = toRemove.next;
+            if (toRemove.next != null) {
+                toRemove.next.prev = current;
+            } else {
+                tail = current;
+            }
+        }
+    }
 
+    /*
+     * Prints the playlist
+     */
+    public void displayPlaylist() {
+        Node current = head;
+        while (current != null) {
+            // System.out.println(current.song);
+            System.out.println("Title: " + current.song.title + ", Artist: " + current.song.artist + ", Duration: " + current.song.getFormattedDuration());
+            // System.out.println("Title: " + current.song.title + ", Artist: " + current.song.artist + ", Duration: " + current.song.duration);
+            current = current.next;
+        }
+    }
+
+    /*
+    * Returns the number of songs in the playlist
+    */
+    public int getTotalDuration() {
+        int totalDuration = 0;
+        Node current = head;
+        while (current != null) {
+            totalDuration += current.song.duration;
+            current = current.next;
+        }
+        return totalDuration;
+    }
 }
 
