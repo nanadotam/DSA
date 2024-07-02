@@ -242,7 +242,31 @@ public class EnhancedPlaylist {
     }
 
 
-// Shuffle
+    // Shuffle Method
+    // Shuffle with Fisher-Yates Algorithm
+    // https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
+    public void shuffle() {
+        if (head == null && tail == null) { // empty playist
+            return;
+        }
+
+        // Traverse list to count the number of nodes
+        int count = 0;
+        Node current = head;
+        while (current != null) {
+            count++;
+            current = current.next;
+        }
+
+    }
+
+
+
+
+
+
+
+    
 
 }
 
