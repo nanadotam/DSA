@@ -258,6 +258,22 @@ public class EnhancedPlaylist {
             current = current.next;
         }
 
+        // Storing nodes in an array
+        Node[] numNodes = new Node[count]; // create node array with size of elements in List
+        current = head;
+        for (int i = 0; i < count; i++) { // loop to store nodes in node array
+            numNodes[i] = current;     
+            current = current.next;     
+        }
+
+        // Implementing Fisher-Yates algorithm
+        for (int i = count - 1; i > 0; i--) { // replace elements by traversing list in reverse and swapping
+            int j = (int) (Math.random() * (i + 1)); // random number between 0 and i
+            // Swap song nodes
+            Song temp = numNodes[i].song;
+            numNodes[i] = numNodes[j];
+            numNodes[j] = temp;
+        }
     }
 
 
