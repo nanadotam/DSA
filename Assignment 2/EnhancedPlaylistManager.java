@@ -19,8 +19,8 @@ public class EnhancedPlaylistManager {
 
         System.out.println("\nTotal Duration: " + playlist.getFormattedTotalDuration());
 
-        // playlist.shufflePlaylist();
         System.out.println("\nShuffled Playlist:");
+        playlist.shuffle();
         playlist.displayPlaylist();
 
         System.out.println("\nPlaying next song after Song2:");
