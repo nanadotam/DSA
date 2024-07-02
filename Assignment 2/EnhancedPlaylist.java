@@ -193,7 +193,7 @@ public class EnhancedPlaylist {
     }
 
     public String getFormattedTotalDuration() {
-        int totalDuration = getTotalDuration();
+        int totalDuration = getTotalDuration();         
         int hours = totalDuration / 3600;
         int min = (totalDuration % 3600) / 60;
         int secs = totalDuration % 60;
@@ -241,6 +241,7 @@ public class EnhancedPlaylist {
         }
     }
 
+    
 
 }
 
