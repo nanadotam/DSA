@@ -2,7 +2,7 @@ public class EnhancedPlaylistManager {
     public static void main(String[] args) {
         EnhancedPlaylist playlist = new EnhancedPlaylist();
 
-        // Import songs from SPotify
+        // Import songs from Spotify
         playlist.addSong(new Song("Oprah’s Bank Account (Lil Yachty, DaBaby, Drake)", "Lil Yachty, DaBaby, Drake", 207));
         playlist.addSong(new Song("Cardigan", "Don Toliver", 159));
         playlist.addSong(new Song("Space Cadet (feat. Gunna)", "Metro Boomin, Gunna", 203));
