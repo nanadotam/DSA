@@ -1,10 +1,3 @@
-// add playing next song
-// add previous song
-// SHUFFLING the playlist (use random)
-
-
-
-
 public class EnhancedPlaylist {
     /*
      * Node class
@@ -271,8 +264,8 @@ public class EnhancedPlaylist {
             int j = (int) (Math.random() * (i + 1)); // random number between 0 and i
             // Swap song nodes
             Song temp = numNodes[i].song;
-            numNodes[i] = numNodes[j];
-            numNodes[j] = temp;
+            numNodes[i].song = numNodes[j].song;
+            numNodes[j].song = temp;
         }
     }
 
