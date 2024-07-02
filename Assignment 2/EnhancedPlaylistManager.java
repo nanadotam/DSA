@@ -1,18 +1,21 @@
-// class for testing
-
 public class EnhancedPlaylistManager {
     public static void main(String[] args) {
         EnhancedPlaylist playlist = new EnhancedPlaylist();
 
-        Song song1 = new Song("Song1", "Artist1", 300);
-        Song song2 = new Song("Song2", "Artist2", 240);
-        Song song3 = new Song("Song3", "Artist3", 182);
-        Song song4 = new Song("Song4", "Artist4", 210);
-
-        playlist.addSong(song1);
-        playlist.addSong(song2);
-        playlist.addSong(song3);
-        playlist.addSong(song4);
+        // Adding songs from the provided playlist
+        playlist.addSong(new Song("Oprah’s Bank Account (Lil Yachty, DaBaby, Drake)", "Lil Yachty, DaBaby, Drake", 207));
+        playlist.addSong(new Song("Cardigan", "Don Toliver", 159));
+        playlist.addSong(new Song("Space Cadet (feat. Gunna)", "Metro Boomin, Gunna", 203));
+        playlist.addSong(new Song("Rich Nigga Shit (feat. Young Thug)", "21 Savage, Metro Boomin, Young Thug", 190));
+        playlist.addSong(new Song("DOLLAZ ON MY HEAD (feat. Young Thug)", "Gunna, Young Thug", 198));
+        playlist.addSong(new Song("The Box", "Roddy Ricch", 197));
+        playlist.addSong(new Song("Sum 2 Prove", "Lil Baby", 206));
+        playlist.addSong(new Song("Overdue (with Travis Scott)", "Metro Boomin, Travis Scott", 166));
+        playlist.addSong(new Song("Drip or Drown", "Gunna", 126));
+        playlist.addSong(new Song("Bacc Seat (feat. Ty Dolla $ign)", "Roddy Ricch, Ty Dolla $ign", 172));
+        playlist.addSong(new Song("Sky", "Playboi Carti", 193));
+        playlist.addSong(new Song("Who You Foolin", "Gunna", 152));
+        playlist.addSong(new Song("Not Another Love Song", "Ella Mai", 218));
 
         System.out.println("Original Playlist:");
         playlist.displayPlaylist();
@@ -23,28 +26,28 @@ public class EnhancedPlaylistManager {
         playlist.shuffle();
         playlist.displayPlaylist();
 
-        System.out.println("\nPlaying next song after Song2:");
-        Song nextSong = playlist.playNext(song2);
+        System.out.println("\nPlaying next song after 'Cardigan':");
+        Song nextSong = playlist.playNext(new Song("Cardigan", "Don Toliver", 159));
         if (nextSong != null) {
             System.out.println("Next Song: " + nextSong.title);
         } else {
             System.out.println("No next song.");
         }
 
-        System.out.println("\nPlaying previous song before Song2:");
-        Song prevSong = playlist.playPrevious(song2);
+        System.out.println("\nPlaying previous song before 'Cardigan':");
+        Song prevSong = playlist.playPrevious(new Song("Cardigan", "Don Toliver", 159));
         if (prevSong != null) {
             System.out.println("Previous Song: " + prevSong.title);
         } else {
             System.out.println("No previous song.");
         }
 
-        playlist.removeSong("Song2");
-        System.out.println("\nPlaylist after removing Song2:");
+        playlist.removeSong("Cardigan");
+        System.out.println("\nPlaylist after removing 'Cardigan':");
         playlist.displayPlaylist();
 
-        playlist.addSong(new Song("Song5", "Artist5", 220), 1);
-        System.out.println("\nPlaylist after adding Song5 at position 1:");
+        playlist.addSong(new Song("New Song", "New Artist", 220), 1);
+        System.out.println("\nPlaylist after adding 'New Song' at position 1:");
         playlist.displayPlaylist();
 
         playlist.removeSong(1);
