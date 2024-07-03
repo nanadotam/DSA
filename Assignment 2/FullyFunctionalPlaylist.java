@@ -78,6 +78,22 @@ public class FullyFunctionalPlaylist {
                 head.next = head; // make the head point to itself to make it circular
                 head.prev = head;   // make the head point to itself to make it circular
             } else {
-                // to be finished!
+                newNode.next = head; // make newNode point to head
+                newNode.prev = tail; // point to tail
+                head.prev = newNode;
+                tail.next = newNode;
+                head = newNode;
             }
+        } else {
+            Node current = head; // make current node the head node
+            for (int i = 0; i < position - 1; i++) { // find position
+                if (current.next == head) {
+                    break;  // if position is out of bounds, add at the end
+                }
+            }   
+            newNode.next = current.next; // new node points to current next node
+            newNode.prev = current;
+
+            // TO BE FINISHED!
+        }
 }
