@@ -208,17 +208,22 @@ public class EnhancedPlaylist {
      * @param currentSong Current Song object being played
      * @return the next Song object
      */
-    public Song playNext(Song song){ 
-        Node current = head;
-        while (current != null && !current.song.equals(song)) {
+    public Song playNext(String title) {
+        Node current = head; // initialize current pointer to head
+        while (current != null) {
+            if (current.song.getTitle().equals(title)) { // Finding song in playlist using title
+                if (current.next != null) { // check if there is a next song
+                    return current.next.song;
+                } else {
+                    return null; // no next song
+                }
+            }
             current = current.next;
         }
-        if (current != null && current.next != null) {
-            return current.next.song;
-        } else {
-            return null; // no next song
-        }
+        return null; // no song found
     }
+
+
 
     /*
      * Play previous song in the playlist
