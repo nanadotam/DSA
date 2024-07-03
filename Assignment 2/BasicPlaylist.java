@@ -12,7 +12,6 @@ public class BasicPlaylist {
          * Node constructor
          * @param song Song object
          */
-        // Constructor
         Node (Song song) {
             this.song = song;
             this.next = null;
@@ -29,7 +28,6 @@ public class BasicPlaylist {
      * BasicPlaylist constructor
      * @param head Pointer for traversing through list.
      */
-    // Constructor
     public BasicPlaylist() {
         this.head = null;
     }
@@ -148,5 +146,20 @@ public class BasicPlaylist {
         }
         return totalDuration;
     }
-
+    
+    /*
+     * Converts total song duration to a formatted form "H:MM:SS"
+     */
+    public String getFormattedTotalDuration() {
+        int totalDuration = getTotalDuration();         
+        int hours = totalDuration / 3600;
+        int min = (totalDuration % 3600) / 60;
+        int secs = totalDuration % 60;
+    
+        if (hours <= 0) {
+            return String.format("%02d:%02d", min, secs);
+        } else {
+            return String.format("%d:%02d:%02d", hours, min, secs);
+        }
+    }
 }
