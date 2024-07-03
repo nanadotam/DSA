@@ -208,6 +208,8 @@ public class EnhancedPlaylist {
     public Song playNext(String title) {
         Node current = head; // initialize current pointer to head
         while (current != null) {
+            // incase there are two songs same name
+            // check if artists are the same
             if (current.song.getTitle().equals(title)) { // Finding song in playlist using title
                 if (current.next != null) { // check if there is a next song
                     return current.next.song;
