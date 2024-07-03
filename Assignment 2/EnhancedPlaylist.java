@@ -14,7 +14,6 @@ public class EnhancedPlaylist {
          * Node constructor
          * @param song Song object
          */
-        // Constructor
         Node (Song song) {
             this.song = song;
             this.prev = null;
