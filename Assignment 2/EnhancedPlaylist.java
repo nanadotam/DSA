@@ -1,8 +1,3 @@
-// FIX NEXT AND PREV SONG BUTTONS
-
-
-
-
 public class EnhancedPlaylist {
     /*
      * Node class
