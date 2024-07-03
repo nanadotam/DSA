@@ -50,9 +50,9 @@ public class EnhancedPlaylistManager {
         
         // Play Previous song, Should return actual song and not null
         System.out.println("\nPlaying previous song before 'Cardigan':");
-        Song prevSong = playlist.playPrevious("Cardigan");
-        if (prevSong != null) {
-            System.out.println("Previous Song: " + prevSong.title);
+        Song prevSong1 = playlist.playPrevious("Cardigan");
+        if (prevSong1 != null) {
+            System.out.println("Previous Song: " + prevSong1.title);
         } else {
             System.out.println("No previous song.");
         }

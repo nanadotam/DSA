@@ -207,8 +207,8 @@ public class EnhancedPlaylist {
     }
 
     /*
-     * Play next song in the playlist
-     * @param currentSong Current Song object being played
+     * Play next song in the playlist using song title of current song
+     * @param Title Title of current Song object being played
      * @return the next Song object
      */
     public Song playNext(String title) {
@@ -221,27 +221,31 @@ public class EnhancedPlaylist {
                     return null; // no next song
                 }
             }
-            current = current.next;
+            current = current.next; // move to the next node
         }
         return null; // no song found
     }
 
     /*
-     * Play previous song in the playlist
-     * @param currentSong Current Song object being played
+     * Play previous song in the playlist using song title of current song
+     * @param Title Title of current Song object being played
      * @return the previous Song object
      */
-    public Song playPrevious(Song song){ 
-        Node current = head;
-        while (current != null && !current.song.equals(song)) {
-            current = current.next;
+    public Song playPrevious(String title){ 
+        Node current = head;    // initialize current pointer to head
+        while (current != null) { // Finding song in playlist using title
+            if (current.song.getTitle().equals(title)) { // Finding song in playlist using title
+                if (current.prev != null) { // check if there is a next song
+                    return current.prev.song;
+                } else {
+                    return null; // no next song
+                }
+            }
+            current = current.next; // move to the next node
         }
-        if (current != null && current.next != null) {
-            return current.prev.song;
-        } else {
-            return null; // no previous song
-        }
+        return null; // no song found
     }
+
 
     /*
     * Shuffle Method
