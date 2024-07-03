@@ -190,6 +190,9 @@ public class EnhancedPlaylist {
         return totalDuration;
     }
 
+    /*
+     * Converts total song duration to a formatted form "H:MM:SS"
+     */
     public String getFormattedTotalDuration() {
         int totalDuration = getTotalDuration();         
         int hours = totalDuration / 3600;
@@ -223,13 +226,9 @@ public class EnhancedPlaylist {
         return null; // no song found
     }
 
-
-
     /*
      * Play previous song in the playlist
-     * @param currentSong Current Song
-     * 
-     *  object being played
+     * @param currentSong Current Song object being played
      * @return the previous Song object
      */
     public Song playPrevious(Song song){ 
@@ -244,10 +243,12 @@ public class EnhancedPlaylist {
         }
     }
 
-
-    // Shuffle Method
-    // Shuffle with Fisher-Yates Algorithm
-    // https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
+    /*
+    * Shuffle Method
+    * Shuffles the playlist using the Fisher-Yates Algorithm.
+    * For more info on the algorithm, see: 
+    * https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
+    */
     public void shuffle() {
         if (head == null && tail == null) { // empty playist
             return;
