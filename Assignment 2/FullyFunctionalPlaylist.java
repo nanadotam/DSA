@@ -30,6 +30,7 @@ public class FullyFunctionalPlaylist {
      */
     private Node head;
     private Node tail;
+    private boolean enableRepeatAll; // continuous play
 
     /* 
      * FullyFunctionalPlaylist constructor
