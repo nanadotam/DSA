@@ -50,11 +50,33 @@ public class FullyFunctionalPlaylist {
         if (head == null) { // if list is empty
             head = newNode; // make first node the song
             tail = newNode; // make first node the tail as well
+            head.next = head; // make the head point to itself to make it circular
+            head.prev = head;   // make the head point to itself to make it circular
         } else {   // else if the list is non-empty
             tail.next = newNode; // last element is the new node
             newNode.prev = tail; // prev pointer of newNode is the current tail
+            newNode.next = head; // next pointer of newNode is the head to make it circular
             tail = newNode; // update current tail to the newNode
         }
     }
 
+
+    /*
+     * Adds a song to the playlist at a specified position.
+     * @param song Song to be added.
+     * @param position Position to add the song at
+     */
+    public void addSong(Song song, int position) {
+        Node newNode = new Node(song); // initailize new node
+        if (position == 0) { // if position is at the beginning 
+            // newNode.next = head; // make newNode point to head
+            if (head != null) {
+                // head.prev = newNode; // update head's prev pointer to new node
+                head = newNode; // make first node the song
+                tail = newNode; // make first node the tail as well
+                head.next = head; // make the head point to itself to make it circular
+                head.prev = head;   // make the head point to itself to make it circular
+            } else {
+                // to be finished!
+            }
 }
