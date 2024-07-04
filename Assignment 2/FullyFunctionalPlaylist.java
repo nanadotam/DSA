@@ -228,16 +228,14 @@ public class FullyFunctionalPlaylist {
      */
     public Song playPrevious(String title) { 
         Node current = head;    // initialize current pointer to head
-        do {
-            if (current.song.getTitle().equals(title)) { // Finding song in playlist using title
-                if (current.prev != tail || repeatAll) { // check if there is a previous song or continuous play mode is on
-                    return current.prev.song;
-                } else {
-                    return null; // no previous song in normal mode
-                }
+        while (current != null) {
+            if (current.prev != tail || repeatAll) {
+                return current.prev.song;
+            } else {
+                return null; // no next song
             }
-            current = current.next; // move to the next node
-        } while (current != head);
+            current = current.next;
+        }
         return null; // no song found
     }
 
@@ -249,20 +247,23 @@ public class FullyFunctionalPlaylist {
     }
 
     /*
-     * Shuffles the playlist using the Fisher-Yates Algorithm
-     */
+    * Shuffle Method
+    * Shuffles the playlist using the Fisher-Yates Algorithm.
+    * For more info on the algorithm, see: 
+    * https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
+    */
     public void shuffle() {
-        if (head == null && tail == null) { // empty playlist
+        if (head == null && tail == null) { // empty playist
             return;
         }
 
         // Traverse list to count the number of nodes
         int count = 0;
         Node current = head;
-        do {
+        while (current != null) {
             count++;
             current = current.next;
-        } while (current != head);
+        }
 
         // Storing nodes in an array
         Node[] numNodes = new Node[count]; // create node array with size of elements in List
@@ -282,3 +283,4 @@ public class FullyFunctionalPlaylist {
         }
     }
 }
+
