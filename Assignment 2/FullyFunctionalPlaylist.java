@@ -93,6 +93,11 @@ public class FullyFunctionalPlaylist {
             }   
             newNode.next = current.next; // new node points to current next node
             newNode.prev = current;
+            current.next.prev = newNode;
+            current.next = newNode; // point back to each other
+            if (current == tail) {
+                tail = newNode; // upon adding at the end, update tail node
+            }
 
             // TO BE FINISHED!
 
