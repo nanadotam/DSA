@@ -167,17 +167,53 @@ public void removeSong(String title) {
     }
 
 
+        
     /*
-     * Prints the playlist
-     */
+    * Prints the playlist
+    */
     public void displayPlaylist() {
-        if (head == null) return; // if the list is empty, do nothing
+        if (head == null) {
+            return; // if the list is empty, do nothing
+        }
         Node current = head;
-        do {
+        boolean firstPass = true;
+        while (firstPass || current != head) {
+            firstPass = false;
             System.out.println("Title: " + current.song.title + ", Artist: " + current.song.artist + ", Duration: " + current.song.getFormattedDuration());
             current = current.next;
-        } while (current != head);
+        }
     }
+
+
+    // /*
+    // * Prints the playlist
+    // */
+    // public void displayPlaylist() {
+    //     if (head == null) {
+    //         return; // if the list is empty, do nothing
+    //     }
+    //     Node current = head;
+    //     while (true) {
+    //         System.out.println("Title: " + current.song.title + ", Artist: " + current.song.artist + ", Duration: " + current.song.getFormattedDuration());
+    //         current = current.next;
+    //         if (current == head) {
+    //             break; // traversed the whole list and returned to the head
+    //         }
+    //     }
+        
+    // }
+
+    // /*
+    //  * Prints the playlist
+    //  */
+    // public void displayPlaylist() {
+    //     if (head == null) return; // if the list is empty, do nothing
+    //     Node current = head;
+    //     do {
+    //         System.out.println("Title: " + current.song.title + ", Artist: " + current.song.artist + ", Duration: " + current.song.getFormattedDuration());
+    //         current = current.next;
+    //     } while (current != head);
+    // }
 
     // /*
     //  * Prints the playlist
@@ -309,4 +345,3 @@ public void removeSong(String title) {
         }
     }
 }
-
