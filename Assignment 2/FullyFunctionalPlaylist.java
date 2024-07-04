@@ -172,6 +172,36 @@ public class FullyFunctionalPlaylist {
     }
 
     /*
+    * Returns the number of songs in the playlist
+    */
+    public int getTotalDuration() {
+        int totalDuration = 0;
+        Node current = head;
+        while (current != null) {
+            totalDuration += current.song.duration;
+            current = current.next;
+        }
+        return totalDuration;
+    }
+    
+    /*
+     * Converts total song duration to a formatted form "H:MM:SS"
+     */
+    public String getFormattedTotalDuration() {
+        int totalDuration = getTotalDuration();         
+        int hours = totalDuration / 3600;
+        int min = (totalDuration % 3600) / 60;
+        int secs = totalDuration % 60;
+    
+        if (hours <= 0) {
+            return String.format("%02d:%02d", min, secs);
+        } else {
+            return String.format("%d:%02d:%02d", hours, min, secs);
+        }
+    }
+
+
+    /*
      * Play next song in the playlist using song title of current song
      * @param title Title of current Song object being played
      * @return the next Song object
