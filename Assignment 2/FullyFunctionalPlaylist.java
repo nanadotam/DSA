@@ -102,33 +102,40 @@ public class FullyFunctionalPlaylist {
     }
 
     /*
-     * Removes a song from the playlist using its Title
-     * @param title Title of song to be removed
-     */ 
-    public void removeSong(String title) {
-        if (head == null && tail == null) {
-            return; // empty playlist; do nothing
-        }
-        Node current = head;
-        do {
-            if (current.song.getTitle().equals(title)) {
-                if (current == head) {
-                    head = head.next;
-                    tail.next = head;
-                    head.prev = tail;
-                } else if (current == tail) {
-                    tail = tail.prev;
-                    tail.next = head;
-                    head.prev = tail;
-                } else {
-                    current.prev.next = current.next;
-                    current.next.prev = current.prev;
-                }
-                return;
-            }
-            current = current.next;
-        } while (current != head);
+ * Removes a song from the playlist using its Title
+ * @param title Title of song to be removed
+ */ 
+public void removeSong(String title) {
+    if (head == null) {
+        return; // empty playlist; do nothing
     }
+
+    Node current = head;
+
+    // Loop through the list until we return to the head
+    while (true) {
+        if (current.song.title.equals(title)) {
+            if (current == head && current == tail) { // only one node in the list
+                head = null;
+                tail = null; // list becomes empty
+            } else {
+                current.prev.next = current.next;
+                current.next.prev = current.prev;
+                if (current == head) {
+                    head = current.next;
+                }
+                if (current == tail) {
+                    tail = current.prev;
+                }
+            }
+            return;
+        }
+        current = current.next;
+        if (current == head) {
+            break; // traversed the whole list and returned to the head
+        }
+    }
+}
 
     /*
      * Removes a song at a specified position
@@ -159,6 +166,7 @@ public class FullyFunctionalPlaylist {
         }
     }
 
+
     /*
      * Prints the playlist
      */
@@ -170,6 +178,19 @@ public class FullyFunctionalPlaylist {
             current = current.next;
         } while (current != head);
     }
+
+    // /*
+    //  * Prints the playlist
+    //  */
+    // public void displayPlaylist() {
+    //     Node current = head;
+    //     while (current != null) {
+    //         // System.out.println(current.song);
+    //         System.out.println("Title: " + current.song.title + ", Artist: " + current.song.artist + ", Duration: " + current.song.getFormattedDuration());
+    //         // System.out.println("Title: " + current.song.title + ", Artist: " + current.song.artist + ", Duration: " + current.song.duration);
+    //         current = current.next;
+    //     }
+    // }
 
     /*
     * Returns the number of songs in the playlist
@@ -208,19 +229,22 @@ public class FullyFunctionalPlaylist {
      */
     public Song playNext(String title) {
         Node current = head; // initialize current pointer to head
-        do {
+        while (current != null) {
+            // incase there are two songs same name
+            // check if artists are the same
             if (current.song.getTitle().equals(title)) { // Finding song in playlist using title
-                if (current.next != head || repeatAll) { // check if there is a next song or repeat all mode is on
+                if (current.next != head || repeatAll) { // check if there is a next song
                     return current.next.song;
                 } else {
-                    return null; // no next song in normal mode
+                    return null; // no next song
                 }
             }
             current = current.next; // move to the next node
-        } while (current != head);
+        }
         return null; // no song found
     }
 
+    
     /*
      * Play previous song in the playlist using song title of current song
      * @param title Title of current Song object being played
@@ -230,9 +254,11 @@ public class FullyFunctionalPlaylist {
         Node current = head;    // initialize current pointer to head
         while (current != null) {
             if (current.prev != tail || repeatAll) {
-                return current.prev.song;
-            } else {
-                return null; // no next song
+                if (current.song.getTitle().equals(title)) {
+                    return current.prev.song;
+                } else {
+                    return null; // no next song
+                }
             }
             current = current.next;
         }
