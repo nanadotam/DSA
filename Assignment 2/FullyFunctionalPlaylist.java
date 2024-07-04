@@ -30,7 +30,7 @@ public class FullyFunctionalPlaylist {
      */
     private Node head;
     private Node tail;
-    private boolean enableRepeatAll; // continuous play
+    private boolean repeatAll; // continuous play
 
     /* 
      * FullyFunctionalPlaylist constructor
@@ -98,11 +98,157 @@ public class FullyFunctionalPlaylist {
             if (current == tail) {
                 tail = newNode; // upon adding at the end, update tail node
             }
-
-            // TO BE FINISHED!
-
-            // Added changes for contribution graph streak
-
-            // New commits for graph - bad internet
         }
+    }
+
+    /*
+     * Removes a song from the playlist using its Title
+     * @param title Title of song to be removed
+     */ 
+    public void removeSong(String title) {
+        if (head == null && tail == null) {
+            return; // empty playlist; do nothing
+        }
+        Node current = head;
+        do {
+            if (current.song.getTitle().equals(title)) {
+                if (current == head) {
+                    head = head.next;
+                    tail.next = head;
+                    head.prev = tail;
+                } else if (current == tail) {
+                    tail = tail.prev;
+                    tail.next = head;
+                    head.prev = tail;
+                } else {
+                    current.prev.next = current.next;
+                    current.next.prev = current.prev;
+                }
+                return;
+            }
+            current = current.next;
+        } while (current != head);
+    }
+
+    /*
+     * Removes a song at a specified position
+     * @param position Position of song to be removed
+     */
+    public void removeSong(int position) {
+        if (head == null && tail == null) { // empty playlist
+            return;
+        }
+        Node current = head;
+        for (int i = 0; i < position; i++) {
+            current = current.next;
+            if (current == head) {
+                return; // if position is out of bounds, do nothing
+            }
+        }
+        if (current == head) {
+            head = head.next;
+            tail.next = head;
+            head.prev = tail;
+        } else if (current == tail) {
+            tail = tail.prev;
+            tail.next = head;
+            head.prev = tail;
+        } else {
+            current.prev.next = current.next;
+            current.next.prev = current.prev;
+        }
+    }
+
+    /*
+     * Prints the playlist
+     */
+    public void displayPlaylist() {
+        if (head == null) return; // if the list is empty, do nothing
+        Node current = head;
+        do {
+            System.out.println("Title: " + current.song.title + ", Artist: " + current.song.artist + ", Duration: " + current.song.getFormattedDuration());
+            current = current.next;
+        } while (current != head);
+    }
+
+    /*
+     * Play next song in the playlist using song title of current song
+     * @param title Title of current Song object being played
+     * @return the next Song object
+     */
+    public Song playNext(String title) {
+        Node current = head; // initialize current pointer to head
+        do {
+            if (current.song.getTitle().equals(title)) { // Finding song in playlist using title
+                if (current.next != head || repeatAll) { // check if there is a next song or repeat all mode is on
+                    return current.next.song;
+                } else {
+                    return null; // no next song in normal mode
+                }
+            }
+            current = current.next; // move to the next node
+        } while (current != head);
+        return null; // no song found
+    }
+
+    /*
+     * Play previous song in the playlist using song title of current song
+     * @param title Title of current Song object being played
+     * @return the previous Song object
+     */
+    public Song playPrevious(String title) { 
+        Node current = head;    // initialize current pointer to head
+        do {
+            if (current.song.getTitle().equals(title)) { // Finding song in playlist using title
+                if (current.prev != tail || repeatAll) { // check if there is a previous song or continuous play mode is on
+                    return current.prev.song;
+                } else {
+                    return null; // no previous song in normal mode
+                }
+            }
+            current = current.next; // move to the next node
+        } while (current != head);
+        return null; // no song found
+    }
+
+    /*
+     * Toggles the continuous play mode
+     */
+    public void toggleRepeatAll() {
+        repeatAll = !repeatAll;
+    }
+
+    /*
+     * Shuffles the playlist using the Fisher-Yates Algorithm
+     */
+    public void shuffle() {
+        if (head == null && tail == null) { // empty playlist
+            return;
+        }
+
+        // Traverse list to count the number of nodes
+        int count = 0;
+        Node current = head;
+        do {
+            count++;
+            current = current.next;
+        } while (current != head);
+
+        // Storing nodes in an array
+        Node[] numNodes = new Node[count]; // create node array with size of elements in List
+        current = head;
+        for (int i = 0; i < count; i++) { // loop to store nodes in node array
+            numNodes[i] = current;     
+            current = current.next;     
+        }
+
+        // Implementing Fisher-Yates algorithm
+        for (int i = count - 1; i > 0; i--) { // replace elements by traversing list in reverse and swapping
+            int j = (int) (Math.random() * (i + 1)); // random number between 0 and i
+            // Swap song nodes
+            Song temp = numNodes[i].song;
+            numNodes[i].song = numNodes[j].song;
+            numNodes[j].song = temp;
+        }
+    }
 }
