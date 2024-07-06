@@ -34,7 +34,6 @@ public class EnhancedPlaylist {
      * EnhancedPlaylist constructor
      * @param head Pointer for traversing through list.
      */
-    // Constructor
     public EnhancedPlaylist() {
         this.head = null;
         this.tail = null;

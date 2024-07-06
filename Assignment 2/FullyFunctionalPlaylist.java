@@ -36,7 +36,6 @@ public class FullyFunctionalPlaylist {
      * FullyFunctionalPlaylist constructor
      * @param head Pointer for traversing through list.
      */
-    // Constructor
     public FullyFunctionalPlaylist() {
         this.head = null;
         this.tail = null;
@@ -53,7 +52,7 @@ public class FullyFunctionalPlaylist {
             tail = newNode; // make first node the tail as well
             head.next = head; // make the head point to itself to make it circular
             head.prev = head;   // make the head point to itself to make it circular
-        } else {   // else if the list is non-empty
+        } else {   // else if the list is not empty
             tail.next = newNode; // last element is the new node
             newNode.prev = tail; // prev pointer of newNode is the current tail
             newNode.next = head; // next pointer of newNode is the head to make it circular
