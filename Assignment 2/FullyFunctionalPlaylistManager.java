@@ -17,11 +17,11 @@ public class FullyFunctionalPlaylistManager {
         playlist.addSong(new Song("Not Another Love Song", "Ella Mai", 218));
 
         // Display Original Playlist
-        System.out.println("Original Playlist:");
-        playlist.displayPlaylist();
+        // System.out.println("Original Playlist:");
+        // playlist.displayPlaylist();
 
         // Display total duration
-        System.out.println("\nTotal Duration: " + playlist.getFormattedTotalDuration());
+        // System.out.println("\nTotal Duration: " + playlist.getFormattedTotalDuration());
 
         // Test Play Previous song before song at position 1, should return null
         System.out.println("\nPlaying previous song before 'Oprah’s Bank Account':");
@@ -37,7 +37,7 @@ public class FullyFunctionalPlaylistManager {
         playlist.shuffle();
 
         // Display Playlist after shuffling
-        playlist.displayPlaylist();
+        // playlist.displayPlaylist();
 
         // Play Next Song
         System.out.println("\nPlaying next song after 'Cardigan':");
