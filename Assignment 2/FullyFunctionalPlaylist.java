@@ -170,7 +170,6 @@ public class FullyFunctionalPlaylist {
     }
 
 
-        
     /*
     * Prints the playlist
     */
@@ -181,12 +180,29 @@ public class FullyFunctionalPlaylist {
         Node current = head;
         boolean firstPass = true;
         while (firstPass || current != head) {
-            firstPass = false;
+            // firstPass = false;
             System.out.println("Title: " + current.song.title + ", Artist: " + current.song.artist + ", Duration: " + current.song.getFormattedDuration());
             current = current.next;
+            if (current == head) { // traversed the whole list and returned to the head
+                firstPass = false;
+                break; 
+            }
         }
     }
 
+    // /*
+    // * Prints the playlist
+    // */
+    // public void displayPlaylist() {
+    //     if (head == null) {
+    //         return; // if the list is empty, do nothing
+    //     }
+    //     Node current = head;
+    //     do {
+    //         System.out.println("Title: " + current.song.title + ", Artist: " + current.song.artist + ", Duration: " + current.song.getFormattedDuration());
+    //         current = current.next;
+    //     } while (current != head); // continue until we return to the head
+    // }
 
     // /*
     // * Prints the playlist
