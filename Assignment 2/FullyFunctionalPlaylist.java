@@ -256,6 +256,9 @@ public class FullyFunctionalPlaylist {
         while (current != null) {
             totalDuration += current.song.duration;
             current = current.next;
+            if (current == head) { // traversed the whole list and returned to the head
+                break; 
+            }
         }
         return totalDuration;
     }
@@ -299,23 +302,22 @@ public class FullyFunctionalPlaylist {
         return null; // no song found
     }
 
-    
     /*
      * Play previous song in the playlist using song title of current song
      * @param title Title of current Song object being played
      * @return the previous Song object
      */
     public Song playPrevious(String title) { 
-        Node current = head;    // initialize current pointer to head
+        Node current = head; // initialize current pointer to head
         while (current != null) {
-            if (current.prev != tail || repeatAll) {
-                if (current.song.getTitle().equals(title)) {
+            if (current.song.getTitle().equals(title)) { // Finding song in playlist using title
+                if (current.prev != tail || repeatAll) { // check if there is a prev song
                     return current.prev.song;
                 } else {
                     return null; // no next song
                 }
             }
-            current = current.next;
+            current = current.next; // move to the next node
         }
         return null; // no song found
     }
@@ -344,6 +346,9 @@ public class FullyFunctionalPlaylist {
         while (current != null) {
             count++;
             current = current.next;
+            if (current == head) { // traversed the whole list and returned to the head
+                break; 
+            }
         }
 
         // Storing nodes in an array
