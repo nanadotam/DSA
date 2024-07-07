@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class FullyFunctionalPlaylist {
     /**
      * Node class
@@ -316,26 +313,31 @@ public class FullyFunctionalPlaylist {
     }
 
     // Additional method -- for fun
-
     /**
+     * Search Method
      * Searches for songs by title or artist.
      * @param keyword The title or artist to search for.
      * @return A list of songs that match the keyword.
      */
-    public List<Song> searchSongs(String keyword) {
-        List<Song> matchingSongs = new ArrayList<>();
+    public void search(String keyword) {
         if (head == null) {
-            return matchingSongs; // Return empty list if the playlist is empty
+            System.out.println("The playlist is empty.");
+            return; // empty playlist, do nothing
         }
-        Node current = head;
+        Node current = head;    // current pointer
+        boolean found = false;  // track found songs
+    
         do {
             if (current.song.getTitle().equalsIgnoreCase(keyword) || current.song.getArtist().equalsIgnoreCase(keyword)) {
-                matchingSongs.add(current.song);
+                System.out.println("Title: " + current.song.title + ", Artist: " + current.song.artist + ", Duration: " + current.song.getFormattedDuration());
+                found = true;   // change to true if song found
             }
-            current = current.next;
-        } while (current != head); // Traverse the entire list
-
-        return matchingSongs;
+            current = current.next; // move to next song node
+        } while (current != head); // traversed the whole list and returned to the head
+    
+        if (!found) {
+            System.out.println("No results found for '" + keyword + "'."); // display message to user
+        }
     }
-
+    
 }

@@ -76,7 +76,6 @@ public class FullyFunctionalPlaylistManager {
             System.out.println("No previous song.");
         }
 
-
         // Remove song from Playlist
         playlist.removeSong("Cardigan");
         System.out.println("\nPlaylist after removing 'Cardigan':");
@@ -92,5 +91,20 @@ public class FullyFunctionalPlaylistManager {
         playlist.removeSong(1);
         System.out.println("\nPlaylist after removing song at position 1:");
         playlist.displayPlaylist();
+
+        // Search for songs by title
+        // returns null because removed
+        System.out.println("\nSearch results for 'Cardigan':");
+        playlist.search("Cardigan");
+        
+        // returns results because it exists in playlist
+        System.out.println("\nSearch results for 'The Box':");
+        playlist.search("The Box");
+        
+        // Search for songs by artist
+        System.out.println("\nSearch results for 'Gunna':");
+        playlist.search("Gunna");
+        
+
     }
 }
