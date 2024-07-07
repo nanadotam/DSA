@@ -122,13 +122,13 @@ public class FullyFunctionalPlaylist {
                     head = null;
                     tail = null; // list becomes empty
                 } else {        // more than one in list
-                    current.prev.next = current.next;
-                    current.next.prev = current.prev;
-                    if (current == head) {
-                        head = current.next;
+                    current.prev.next = current.next; // skip current song point to its next
+                    current.next.prev = current.prev; // skip current song point to its prev
+                    if (current == head) { // if first element
+                        head = current.next; // point to next
                     }
-                    if (current == tail) {
-                        tail = current.prev;
+                    if (current == tail) { // if last element
+                        tail = current.prev; // point to prev
                     }
                 }
                 return;
@@ -156,14 +156,14 @@ public class FullyFunctionalPlaylist {
             }
         }
         if (current == head) {
-            head = head.next;
-            tail.next = head;
-            head.prev = tail;
+            head = head.next; // skipped and moved on to the next
+            tail.next = head; // make the tail.next point to the new head
+            head.prev = tail; // make the new head.prev point to tail
         } else if (current == tail) {
             tail = tail.prev;
             tail.next = head;
             head.prev = tail;
-        } else {
+        } else {        // any other position logic
             current.prev.next = current.next;
             current.next.prev = current.prev;
         }
