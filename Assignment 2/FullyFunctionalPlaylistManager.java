@@ -15,6 +15,7 @@ public class FullyFunctionalPlaylistManager {
         playlist.addSong(new Song("Sky", "Playboi Carti", 193));
         playlist.addSong(new Song("Who You Foolin", "Gunna", 152));
         playlist.addSong(new Song("Not Another Love Song", "Ella Mai", 218));
+        playlist.addSong(new Song("Money & Love", "Wizkid", 191));
 
         // Display Original Playlist
         System.out.println("Original Playlist:");
@@ -100,6 +101,9 @@ public class FullyFunctionalPlaylistManager {
         // returns results because it exists in playlist
         System.out.println("\nSearch results for 'The Box':");
         playlist.search("The Box");
+
+        System.out.println("\nSearch results for 'Love':");
+        playlist.search("Love");
         
         // Search for songs by artist
         System.out.println("\nSearch results for 'Gunna':");

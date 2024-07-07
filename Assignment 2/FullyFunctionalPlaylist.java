@@ -314,8 +314,8 @@ public class FullyFunctionalPlaylist {
 
     // Additional method -- for fun
     /**
-     * Search Method
-     * Searches for songs by title or artist.
+     * Search Method with Enhanced functionality
+     * Searches for songs by title or artist and returns a list of songs with the keyword.
      * @param keyword The title or artist to search for.
      * @return A list of songs that match the keyword.
      */
@@ -326,9 +326,10 @@ public class FullyFunctionalPlaylist {
         }
         Node current = head;    // current pointer
         boolean found = false;  // track found songs
+        keyword = keyword.toLowerCase(); // convert keyword to lowercase to facilitate easy retrieval
     
         do {
-            if (current.song.getTitle().equalsIgnoreCase(keyword) || current.song.getArtist().equalsIgnoreCase(keyword)) {
+            if (current.song.getTitle().toLowerCase().contains(keyword) || current.song.getArtist().toLowerCase().contains(keyword)) {
                 System.out.println("Title: " + current.song.title + ", Artist: " + current.song.artist + ", Duration: " + current.song.getFormattedDuration());
                 found = true;   // change to true if song found
             }
