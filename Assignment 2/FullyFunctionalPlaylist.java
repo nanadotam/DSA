@@ -69,31 +69,35 @@ public class FullyFunctionalPlaylist {
     public void addSong(Song song, int position) {
         Node newNode = new Node(song); // initailize new node
         if (position == 0) { // if position is at the beginning 
-            // newNode.next = head; // make newNode point to head
-            if (head != null) {
-                // head.prev = newNode; // update head's prev pointer to new node
+
+            if (head != null) {     // meaning: head.prev points to tail
                 head = newNode; // make first node the song
                 tail = newNode; // make first node the tail as well
                 head.next = head; // make the head point to itself to make it circular
                 head.prev = head;   // make the head point to itself to make it circular
-            } else {
+            
+            // empty list implementation
+            } else {            // else if the head is null in the circularlylinkedlist
                 newNode.next = head; // make newNode point to head
                 newNode.prev = tail; // point to tail
-                head.prev = newNode;
+                head.prev = newNode; // initialize pointers
                 tail.next = newNode;
-                head = newNode;
+                head = newNode; // the head is the newNode
             }
         } else {
-            Node current = head; // make current node the head node
+            Node current = head; // make current pointer the head node
             for (int i = 0; i < position - 1; i++) { // find position
-                if (current.next == head) {
-                    break;  // if position is out of bounds, add at the end
+                current = current.next;
+                if (current.next == head) { // tail node points to head
+                    // stop the loop
+                    break;  // position out of bounds, add at the end of list
                 }
             }   
             newNode.next = current.next; // new node points to current next node
             newNode.prev = current;
             current.next.prev = newNode;
             current.next = newNode; // point back to each other
+
             if (current == tail) {
                 tail = newNode; // upon adding at the end, update tail node
             }
@@ -101,40 +105,40 @@ public class FullyFunctionalPlaylist {
     }
 
     /*
- * Removes a song from the playlist using its Title
- * @param title Title of song to be removed
- */ 
-public void removeSong(String title) {
-    if (head == null) {
-        return; // empty playlist; do nothing
-    }
+    * Removes a song from the playlist using its Title
+    * @param title Title of song to be removed
+    */ 
+    public void removeSong(String title) {
+        if (head == null) {
+            return; // empty playlist; do nothing
+        }
 
-    Node current = head;
+        Node current = head;
 
-    // Loop through the list until we return to the head
-    while (true) {
-        if (current.song.title.equals(title)) {
-            if (current == head && current == tail) { // only one node in the list
-                head = null;
-                tail = null; // list becomes empty
-            } else {
-                current.prev.next = current.next;
-                current.next.prev = current.prev;
-                if (current == head) {
-                    head = current.next;
+        // Loop through the list until we return to the head
+        while (true) {
+            if (current.song.title.equals(title)) {
+                if (current == head && current == tail) { // only one node in the list
+                    head = null;
+                    tail = null; // list becomes empty
+                } else {        // more than one in list
+                    current.prev.next = current.next;
+                    current.next.prev = current.prev;
+                    if (current == head) {
+                        head = current.next;
+                    }
+                    if (current == tail) {
+                        tail = current.prev;
+                    }
                 }
-                if (current == tail) {
-                    tail = current.prev;
-                }
+                return;
             }
-            return;
-        }
-        current = current.next;
-        if (current == head) {
-            break; // traversed the whole list and returned to the head
+            current = current.next;
+            if (current == head) {
+                break; // traversed the whole list and returned to the head
+            }
         }
     }
-}
 
     /*
      * Removes a song at a specified position
