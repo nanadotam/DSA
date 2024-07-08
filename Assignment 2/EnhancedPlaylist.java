@@ -1,5 +1,5 @@
 public class EnhancedPlaylist {
-    /*
+    /**
      * Node class
      * @param song Song object
      * @param prev Node object
@@ -10,7 +10,7 @@ public class EnhancedPlaylist {
         Node prev;
         Node next;
 
-        /*
+        /**
          * Node constructor
          * @param song Song object
          */
@@ -21,7 +21,7 @@ public class EnhancedPlaylist {
         }
     }
 
-    /*
+    /**
      * Head of the playlist
      * Tail of the playlist
      * @param head Node
@@ -30,7 +30,7 @@ public class EnhancedPlaylist {
     private Node head;
     private Node tail;
 
-    /* 
+    /**
      * EnhancedPlaylist constructor
      * @param head Pointer for traversing through list.
      */
@@ -39,7 +39,7 @@ public class EnhancedPlaylist {
         this.tail = null;
     }
 
-    /*
+    /**
      * Adds a song to the end of the playlist.
      * @param song Song to be added
      */
@@ -55,7 +55,7 @@ public class EnhancedPlaylist {
         }
     }
 
-    /*
+    /**
      * Adds a song to the playlist at a specified position.
      * @param song Song to be added.
      * @param position Position to add the song at
@@ -90,7 +90,7 @@ public class EnhancedPlaylist {
             }
         }
 
-    /*
+    /**
      * Removes a song from the playlist using its Title
      * @param title Title of song to be removed
      */ 
@@ -122,7 +122,7 @@ public class EnhancedPlaylist {
         }
     }
 
-    /*
+    /**
      * Removes a song at a specified position
      * @param position Position of song to be removed
      */
@@ -157,20 +157,18 @@ public class EnhancedPlaylist {
         }
     }
 
-    /*
+    /**
      * Prints the playlist
      */
     public void displayPlaylist() {
         Node current = head;
         while (current != null) {
-            // System.out.println(current.song);
             System.out.println("Title: " + current.song.title + ", Artist: " + current.song.artist + ", Duration: " + current.song.getFormattedDuration());
-            // System.out.println("Title: " + current.song.title + ", Artist: " + current.song.artist + ", Duration: " + current.song.duration);
             current = current.next;
         }
     }
 
-    /*
+    /**
     * Returns the number of songs in the playlist
     */
     public int getTotalDuration() {
@@ -183,7 +181,7 @@ public class EnhancedPlaylist {
         return totalDuration;
     }
 
-    /*
+    /**
      * Converts total song duration to a formatted form "H:MM:SS"
      */
     public String getFormattedTotalDuration() {
@@ -199,7 +197,7 @@ public class EnhancedPlaylist {
         }
     }
 
-    /*
+    /**
      * Play next song in the playlist using song title of current song
      * @param Title Title of current Song object being played
      * @return the next Song object
@@ -221,7 +219,7 @@ public class EnhancedPlaylist {
         return null; // no song found
     }
 
-    /*
+    /**
      * Play previous song in the playlist using song title of current song
      * @param Title Title of current Song object being played
      * @return the previous Song object
@@ -242,7 +240,7 @@ public class EnhancedPlaylist {
     }
 
 
-    /*
+    /**
     * Shuffle Method
     * Shuffles the playlist using the Fisher-Yates Algorithm.
     * For more info on the algorithm, see: 

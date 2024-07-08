@@ -28,18 +28,16 @@ public class Song {
         this.duration = duration;
     }
 
-    /*
+    /**
      * Sets the title of the song.
-     *
      * @param title The title of the song
      */
     public void setTitle(String title) {
         this.title = title;
     }
 
-    /*
+    /**
      * Sets the artist of the song.
-     *
      * @param artist The name of the artist
      */
     public void setArtist(String artist) {
@@ -60,11 +58,4 @@ public class Song {
             return String.format("%d:%02d:%02d", hours, min, secs);
         }
     }
-
-    /*
-    @Override
-    public String toString() {
-        return title + " by " + artist + " [" + getFormattedDuration() + "]";
-    }
-    */
 }
