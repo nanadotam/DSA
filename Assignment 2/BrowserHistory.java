@@ -18,11 +18,11 @@ public class BrowserHistory {
     }
 
     /**
- * Adds a new page to the browsing history.
- *
- * @param url The URL of the page.
- * @param timestamp The timestamp when the page was visited.
- */
+     * Adds a new page to the browsing history.
+     *
+     * @param url The URL of the page.
+     * @param timestamp The timestamp when the page was visited.
+     */
     // Logic to add a new page
     public void addPage(String url, String timestamp) {
         HistoryNode newNode = new HistoryNode(url, timestamp); // initialize a newNode
