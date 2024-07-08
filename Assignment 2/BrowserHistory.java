@@ -5,7 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- * 
+ *  Maintains and manages a browser's history of visited pages.
  */
 public class BrowserHistory {
     private HistoryNode head;
@@ -17,6 +17,12 @@ public class BrowserHistory {
         this.tail = null;
     }
 
+    /**
+ * Adds a new page to the browsing history.
+ *
+ * @param url The URL of the page.
+ * @param timestamp The timestamp when the page was visited.
+ */
     // Logic to add a new page
     public void addPage(String url, String timestamp) {
         HistoryNode newNode = new HistoryNode(url, timestamp); // initialize a newNode
@@ -30,6 +36,10 @@ public class BrowserHistory {
         }
     }
 
+    /**
+     * Removes a page from the browsing history with the given timestamp.
+     * @param timestamp The timestamp of the page to be removed.
+     */
     public void removePage(String timestamp) {
         HistoryNode curr = head;
         while (curr != null) {
@@ -52,6 +62,9 @@ public class BrowserHistory {
         }
     }   
 
+    /**
+    * Displays the browsing history in forward order (oldest to newest).
+    */
     public void displayHistoryForward() {
         HistoryNode curr = head;
         while (curr != null) {
@@ -60,6 +73,9 @@ public class BrowserHistory {
         }
     }
 
+    /**
+     * Displays the browsing history in reverse order (newest to oldest).
+     */
     public void displayHistoryBackward() {
         HistoryNode curr = tail;
         while (curr != null) {
@@ -68,6 +84,11 @@ public class BrowserHistory {
         }
     }
 
+    /**
+     * Saves the browsing history to a file.
+     * @param file The name of the file to save the history to.
+     * @throws IOException If an I/O error occurs while writing to the file.
+     */
     public void saveToFile (String file) throws IOException {
         BufferedWriter writer = null;
         try {
@@ -89,8 +110,14 @@ public class BrowserHistory {
                 }
             }
         }
-    }
+    }   
 
+
+    /**
+     * Reads browser history from a file.
+     * @param file The name of the file to read from.
+     * @throws IOException If an I/O error occurs.
+     */
     public void readFromFile (String file) throws IOException {
         BufferedReader reader = null;
         try {
