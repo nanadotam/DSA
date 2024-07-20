@@ -3,8 +3,6 @@
  * doubly linked lists.
  */
 
-import java.io.*;
-
 class Node {
     String link;    // URL you visit
     Node previous;      // pointer to prev node/link you visit
@@ -35,13 +33,14 @@ public class BrowserHistory {
 
     public void visit(String url) {
         // Initialize url node 
-        Node url = new Node(url);
+        Node urlNode = new Node(url);
 
         // Normal doubly linked list pointer implementation
-        url.previous = current;     // make the previous pointer be the current
-        current.next = url;     // make the next next node url
-        current = url;  // make the current pointer be the url
-        // url.next = null;     // not sure how the next pointer helps?
+        urlNode.previous = current;     // make the previous pointer be the current
+        current.next = urlNode;     // make the next next node url
+        current = urlNode;  // make the current pointer be the url
+        
+        current.next = null;    // Reset forward history
     }
 
     /**
